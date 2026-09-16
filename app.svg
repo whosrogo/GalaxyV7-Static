@@ -14,15 +14,15 @@
 <div style="width: 100vw; height: 100vh">
 <script>/*<![CDATA[*/
 {
-	__sveltekit_1fhbpku = {
+	__sveltekit_e8c8mw = {
 		base: new URL(".", location).pathname.slice(0, -1)
 	};
 
 	const element = document.currentScript.parentElement;
 
 	Promise.all([
-		import("./_app/immutable/entry/start.CqllOFWL.js"),
-		import("./_app/immutable/entry/app.KbP4kXTz.js")
+		import("./_app/immutable/entry/start.CPZkmb4J.js"),
+		import("./_app/immutable/entry/app.8RcAFCAX.js")
 	])
 		.then(([kit, app]) => {
 			kit.start(app, element);
@@ -38,12 +38,11 @@
 </foreignObject>
 <script>/*<![CDATA[*/
 /*
- * width/height="100%" on the foreignObject tracks the viewport on its own, so
- * there is normally nothing to do here. Some engines have historically ignored
- * percentage sizing on foreignObject, so this checks once after load and only
- * falls back to stamping pixels if the box did not actually fill. Stamping
- * unconditionally is what broke this before: it froze the box at whatever the
- * window happened to be at load, and the content was clipped after any resize.
+ * width/height="100%" on the foreignObject tracks the viewport on its own.
+ * Some engines have historically ignored percentage sizing here, so this
+ * measures once after load and only falls back to stamping pixels if the box
+ * did not actually fill. Stamping unconditionally froze the box at whatever
+ * the window happened to be at load time, clipping the page after any resize.
  */
 (function () {
 	var fo = document.querySelector("foreignObject");
