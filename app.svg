@@ -8,24 +8,49 @@
 <script src="./svg-dom-shim.js"></script>
 <link href="./_app/immutable/assets/theme.B2_xeDH5.css" rel="stylesheet" />
 <link href="./_app/immutable/assets/0.mi5MBs-n.css" rel="stylesheet" />
-<link href="./_app/immutable/assets/2.BohuIiUI.css" rel="stylesheet" />
+<link href="./_app/immutable/assets/puzzle.BHipCIrN.css" rel="stylesheet" />
 </head>
 <body data-sveltekit-preload-data="hover">
-<div style="width: 100vw; height: 100vh">
+<div style="width: 100vw; height: 100vh; overflow: auto">
 <script>/*<![CDATA[*/
 {
-	__sveltekit_nd2zw6 = {
+	__sveltekit_tcxp3x = {
 		base: new URL(".", location).pathname.slice(0, -1)
 	};
 
 	const element = document.currentScript.parentElement;
 
 	Promise.all([
-		import("./_app/immutable/entry/start.GA5UQfEz.js"),
-		import("./_app/immutable/entry/app.Cl-p8I5i.js")
+		import("./_app/immutable/entry/start.Cd9qpb_f.js"),
+		import("./_app/immutable/entry/app.SYXAkXKe.js")
 	])
 		.then(([kit, app]) => {
 			kit.start(app, element);
+
+			// trailingSlash:'always' appends a slash to every route, including
+			// this one -- but app.svg is a FILE, not a directory. A static host
+			// 404s "/app.svg/" on reload or a shared link, so put it back once
+			// the router has finished normalising.
+			var trailing = "/app.svg/";
+			var strip = function () {
+				if (location.pathname.endsWith(trailing)) {
+					history.replaceState(
+						history.state,
+						"",
+						location.pathname.slice(0, -1) + location.search + location.hash
+					);
+				}
+			};
+			// The router normalises the URL some ticks after start() resolves,
+			// so one attempt is not enough. Poll briefly and stop once fixed.
+			strip();
+			var tries = 0;
+			var timer = setInterval(function () {
+				strip();
+				if (++tries > 40 || !location.pathname.endsWith(trailing)) {
+					clearInterval(timer);
+				}
+			}, 50);
 		})
 		.catch((err) => {
 			console.error("[galaxy] boot failed:", err);
