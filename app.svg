@@ -14,15 +14,15 @@
 <div style="width: 100vw; height: 100vh">
 <script>/*<![CDATA[*/
 {
-	__sveltekit_e8c8mw = {
+	__sveltekit_nd2zw6 = {
 		base: new URL(".", location).pathname.slice(0, -1)
 	};
 
 	const element = document.currentScript.parentElement;
 
 	Promise.all([
-		import("./_app/immutable/entry/start.CPZkmb4J.js"),
-		import("./_app/immutable/entry/app.8RcAFCAX.js")
+		import("./_app/immutable/entry/start.GA5UQfEz.js"),
+		import("./_app/immutable/entry/app.Cl-p8I5i.js")
 	])
 		.then(([kit, app]) => {
 			kit.start(app, element);
