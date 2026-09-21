@@ -1,8 +1,17 @@
-importScripts("/glass/glass.bundle.js");
-importScripts("/glass/glass.config.js");
-importScripts("/glass/glass.sw.js");
-importScripts("/poly/polygon.all.js");
-importScripts("/hive/prism.sw.js");
+/*
+ * Resolved against this worker's own URL. An absolute "/glass/..." would hit
+ * the ORIGIN root, which is wrong wherever the app is served from a
+ * subdirectory -- on a path-style S3 URL it drops the bucket and 404s.
+ */
+importScripts(
+  ...[
+    "glass/glass.bundle.js",
+    "glass/glass.config.js",
+    "glass/glass.sw.js",
+    "poly/polygon.all.js",
+    "hive/prism.sw.js",
+  ].map((p) => new URL(p, self.location.href).href)
+);
 const glass = new SeleniteServiceWorker();
 const { CinnabarServiceWorker } = $cinnabarLoadWorker();
 const cinnabar = new CinnabarServiceWorker();

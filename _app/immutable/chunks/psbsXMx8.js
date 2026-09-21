@@ -1,0 +1,1 @@
+function r(e){const[t,n]=String(e).split("?");return`./${t.replace(/^\/+/,"").replace(/\/+$/,"")||"index"}.html${n?"?"+n:""}`}function a(e){return new URL(String(e).replace(/^\/+/,""),document.baseURI).pathname}export{a as l,r};
